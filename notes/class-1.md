@@ -186,13 +186,13 @@ print("ENLARGED NUMBER", enlarge(x)) # invoking our function!!
 Running the scripts:
 
 ```sh
-python my_labmdata/my_script.py
-python my_labmdata/my_mod.py
+python my_lambdata/my_script.py
+python my_lambdata/my_mod.py
 
 # note, the alternative "module" invocation syntax
 # ... required if our script imports from another local file:
-python -m my_labmdata.my_script
-python -m my_labmdata.my_mod
+python -m my_lambdata.my_script
+python -m my_lambdata.my_mod
 ```
 
 
@@ -257,4 +257,15 @@ After the package source code has been "built" locally, use twine to upload the 
 
 ```sh
 twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+
+# OR, if you see 403 "file already exists" errors:
+twine upload --skip-existing --repository-url https://test.pypi.org/legacy/ dist/*
 ```
+
+> NOTE: the process whenever you want to release a new version of your package to PyPI is something like:
+>  1. make change and save file
+>  2. revise version value in the setup.py file (for example from 1.0 to 1.1, or from 1.1 to 1.2) and save the file
+>  3. make a commit
+>  4. run the bdist_wheel command to package your code
+>  5. run the twine command to upload the packaged code
+
